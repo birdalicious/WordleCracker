@@ -112,16 +112,16 @@ class Wordle:
 
 
 wordle = Wordle(5, 'words_alpha.txt')
+print("Input \n0 for correct \n1 for incorrect \n2 for incorrect position")
 
 while True:
     word = wordle.bestWord()
-    print(word)
-    print("Input 0 for incorrect, 1 for correct, and 2 for incorrect position")
+    print(f'Try "{word}"')
     for i, l in enumerate(word):
         setting = int(input(f"{l}: "))
-        if setting == 0:
+        if setting == 1:
             wordle.addIncorrectLetters({l,})
-        elif setting == 1:
+        elif setting == 0:
             wordle.addCorrectPositions({l: [i]})
         elif setting == 2:
             wordle.addIncorrectPositions({l: [i]})
