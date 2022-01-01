@@ -116,7 +116,9 @@ print("Input \n0 for correct \n1 for incorrect \n2 for incorrect position")
 
 while True:
     word = wordle.bestWord()
-    print(f'Try "{word}"')
+    good = input(f'Try "{word}" ')
+    if int(good) == 0:
+        continue
     for i, l in enumerate(word):
         setting = int(input(f"{l}: "))
         if setting == 1:
