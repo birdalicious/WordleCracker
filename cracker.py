@@ -39,18 +39,20 @@ class Wordle:
 
     def bestWord(self):
         orderedWords = sorted(list(self.wordChoices), key=self.scores.get, reverse=True)
+        word = ""
+        letters = 0
 
-        words = []
         i = 0
         while i < len(orderedWords):
             seen = set()
             for letter in orderedWords[i]:
                 seen.add(letter)
-            if len(seen) == 5:
-                words.append(orderedWords[i])
+            if len(seen) > letters:
+                word = orderedWords[i]
+                letters = len(set(word))
             i += 1
-        self.wordChoices.remove(words[0])
-        return words[0]
+        self.wordChoices.remove(word)
+        return word
 
     def __init__(self, wordSize, dictionaryFile):
         self.dictionaryFile = dictionaryFile
